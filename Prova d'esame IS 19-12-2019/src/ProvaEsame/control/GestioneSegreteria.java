@@ -42,12 +42,17 @@ public class GestioneSegreteria {
 	
 	
 	public void aggiungiCorso(Corso c) throws DocenteNotFoundException {
+		boolean trovato = false;
 		for(Docente d : ListaDocenti) {
 			if(d.getNomeDocente()==c.getNomeDocente()) {
+				trovato = false;
 				ListaCorsi.add(c);
 				System.out.println("Corso Aggiunto Correttamente");
 				
 			}
+		}
+		if(trovato == false) {
+			throw new DocenteNotFoundException("Docente non trovato");
 		}
 		
 	}
@@ -71,7 +76,8 @@ public class GestioneSegreteria {
 			System.out.println("Appello creato correttamente");
 		}
 		else {
-			System.out.println("Corso or Docente not found");
+			throw new DocenteNotFoundException("Corso or Docente no found");
+			
 		}
 	}
 
@@ -99,7 +105,7 @@ public class GestioneSegreteria {
 			ListaPrenotazioni.add(p);
 		}
 		else {
-			System.out.println("Appello o Studente non trovato");
+			throw new StudenteNotFoundException("Appello o Studente non trovato");
 		}
 	}
 	public ArrayList<Prenotazione> visualizzaPrenotati(Appello app){
