@@ -6,9 +6,9 @@ import ProvaEsame.Exception.DocenteNotFoundException;
 import ProvaEsame.Exception.StudenteNotFoundException;
 import ProvaEsame.entity.Appello;
 import ProvaEsame.entity.Corso;
+import ProvaEsame.entity.DataAppello;
 
-
-
+import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -19,6 +19,8 @@ public class GestioneSegreteria {
 	private ArrayList<Corso> ListaCorsi;
 	private ArrayList<Appello> ListaAppelli;
 	private ArrayList<Prenotazione> ListaPrenotazioni;
+	private ArrayList<DataAppello> ListaProve;
+	
 	
 	public GestioneSegreteria() {
 		ListaStudenti = new ArrayList<Studente>();
@@ -111,6 +113,16 @@ public class GestioneSegreteria {
 		System.out.println("Numero Studenti Prenotati = "+trovati.size());
 		return trovati;
 		
+	}
+	public void  impostaProve(Appello a,Date data, String lab, String tipo) {
+	
+		for(Appello ap : ListaAppelli) {
+			if(ap.getCodice()==a.getCodice()) {
+				DataAppello prova = new DataAppello(a.getNomeEsame(),a.getCodice(),
+						a.getNomeDocente(),data,lab,tipo);
+				ListaProve.add(prova);
+			}
+		}
 	}
 }
 	

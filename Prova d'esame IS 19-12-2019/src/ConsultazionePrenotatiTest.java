@@ -313,63 +313,7 @@ public class ConsultazionePrenotatiTest {
 		prenotati = segreteria.visualizzaPrenotati(null);
 		assertEquals(0,prenotati.size());		
 	}
-	@Test
-	public void test12SimulazioneMain() {
-		Studente s = new Studente(111,"Emanuele","Apolloni");
-		Studente t = new Studente(222,"Angelo","Casciello");
-		Studente v = new Studente(333,"Alfonso","Ferrara");
-		
-		segreteria.aggiungiStudente(s);
-		segreteria.aggiungiStudente(t);
-		segreteria.aggiungiStudente(v);
-		
-		Docente d = new Docente(123,"Tizio Sempronio");
-		Docente e = new Docente(234,"Caio Tizio");
-		segreteria.aggiungiDocente(d);
-		segreteria.aggiungiDocente(e);
-		Corso c = new Corso("Analisi 1",d.getNomeDocente(),9);
-		Corso cor = new Corso("Analisi 2",e.getNomeDocente(),6);
-		Corso cs = new Corso("Metodi Matematici",d.getNomeDocente(),9);
-		try {
-			segreteria.aggiungiCorso(c);
-			segreteria.aggiungiCorso(cor);
-			segreteria.aggiungiCorso(cs);
-		} catch (DocenteNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Appello a = new Appello(4546,"Analisi 1",d.getNomeDocente());
-		Appello ap = new Appello(3456, "Analisi 2",e.getNomeDocente());
-		Appello app = new Appello(4567, "Metodi Matematici ",d.getNomeDocente());
-		try {
-			segreteria.creaAppello(a);
-			segreteria.creaAppello(app);
-			segreteria.creaAppello(ap);
-		} catch (DocenteNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			segreteria.prenotazione(s,a);
-			segreteria.prenotazione(t, a);
-			segreteria.prenotazione(v, a);
-			segreteria.prenotazione(s, ap);
-			segreteria.prenotazione(v,ap);
-			segreteria.prenotazione(t,ap);
-			
-		} catch (StudenteNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		prenotati = segreteria.visualizzaPrenotati(a);
-		assertEquals(3,prenotati.size());
-		for(Prenotazione p : prenotati) {
-			System.out.println(p+"\n");
-		}
 	
-		
-		
-		}
 }
 		
 		
