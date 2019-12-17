@@ -45,7 +45,7 @@ public class GestioneSegreteria {
 		boolean trovato = false;
 		for(Docente d : ListaDocenti) {
 			if(d.getNomeDocente()==c.getNomeDocente()) {
-				trovato = false;
+				trovato = true;
 				ListaCorsi.add(c);
 				System.out.println("Corso Aggiunto Correttamente");
 				
