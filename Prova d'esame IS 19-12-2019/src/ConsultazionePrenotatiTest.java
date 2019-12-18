@@ -315,7 +315,7 @@ public class ConsultazionePrenotatiTest {
 	}
 	@Test
 	public void test12PrenotazioneDuplicata(){
-		Studente s = new Studente(111,"Scorreggia","Fumante");
+		Studente s = new Studente(111,"Pippo","Pluto");
 		segreteria.aggiungiStudente(s);
 		Docente d = new Docente(123,"Ajeje Brazorf");
 		segreteria.aggiungiDocente(d);
