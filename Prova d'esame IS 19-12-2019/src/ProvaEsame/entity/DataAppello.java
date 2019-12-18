@@ -1,17 +1,17 @@
 package ProvaEsame.entity;
-import java.sql.Date;
+import java.time.LocalDate;;
 public class DataAppello extends Appello {
-	protected Date data_prova;
+	protected LocalDate data_prova;
 	protected String Laboratorio;
 	protected String tipoProva;
 	
-	public DataAppello(String Nomedoc,int code, String appello, Date dataprova, String lab, String tipo){
+	public DataAppello(String Nomedoc,int code, String appello, LocalDate dataprova, String lab, String tipo){
 		super(code,appello,Nomedoc);
 		this.data_prova = dataprova;
 		this.Laboratorio = lab;
 		this.tipoProva = tipo;
 	}
-	public Date getDataProva() {
+	public LocalDate getDataProva() {
 		return this.data_prova;
 	}
 	public String getLab() {

@@ -1,5 +1,6 @@
 package ProvaEsame.control;
 import ProvaEsame.entity.Docente;
+import java.time.LocalDate;
 import ProvaEsame.entity.Prenotazione;
 import ProvaEsame.entity.Studente;
 import ProvaEsame.Exception.DocenteNotFoundException;
@@ -7,8 +8,6 @@ import ProvaEsame.Exception.StudenteNotFoundException;
 import ProvaEsame.entity.Appello;
 import ProvaEsame.entity.Corso;
 import ProvaEsame.entity.DataAppello;
-
-import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -28,6 +27,7 @@ public class GestioneSegreteria {
 		ListaCorsi = new ArrayList<Corso>();
 		ListaAppelli = new ArrayList<Appello>();
 		ListaPrenotazioni = new ArrayList<Prenotazione>();
+		ListaProve = new ArrayList<DataAppello>();
 	}
 	
 	public void aggiungiStudente(Studente s) {
@@ -125,7 +125,7 @@ public class GestioneSegreteria {
 		return trovati;
 		
 	}
-	public void  impostaProve(Appello a,Date data, String lab, String tipo) {
+	public void  impostaProve(Appello a,LocalDate data, String lab, String tipo) {
 	
 		for(Appello ap : ListaAppelli) {
 			if(ap.getCodice()==a.getCodice()) {
