@@ -313,6 +313,43 @@ public class ConsultazionePrenotatiTest {
 		prenotati = segreteria.visualizzaPrenotati(null);
 		assertEquals(0,prenotati.size());		
 	}
+	@Test
+	public void test12PrenotazioneDuplicata(){
+		Studente s = new Studente(111,"Scorreggia","Fumante");
+		segreteria.aggiungiStudente(s);
+		Docente d = new Docente(123,"Ajeje Brazorf");
+		segreteria.aggiungiDocente(d);
+		Corso c = new Corso("Test",d.getNomeDocente(),9);
+		try {
+			segreteria.aggiungiCorso(c);
+		} catch (DocenteNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Appello  a = new Appello(124,c.getNomeCorso(),d.getNomeDocente());
+		try {
+			segreteria.creaAppello(a);
+		} catch (DocenteNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			segreteria.prenotazione(s, a);
+			segreteria.prenotazione(s, a);
+		} catch (StudenteNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		prenotati = segreteria.visualizzaPrenotati(a);
+		
+		for(Prenotazione p : prenotati) {
+			System.out.println(p+"\n");
+		}
+		assertEquals(1,prenotati.size());
+		
+		
+		
+	}
 	
 }
 		

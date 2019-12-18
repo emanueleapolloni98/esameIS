@@ -84,6 +84,11 @@ public class GestioneSegreteria {
 	public void prenotazione(Studente st, Appello app) throws StudenteNotFoundException {
 		boolean trovato = false;
 		boolean trovato2 = false;
+		for(Prenotazione p : ListaPrenotazioni) {
+			if(st.getMatricola() == p.getMatricola()) {
+				throw new StudenteNotFoundException("Studente già prenotato");
+				}
+			}
 		String esame = null;
 		String nome = null;
 		String cognome = null;

@@ -17,6 +17,9 @@ public class Prenotazione {
 	public int getCodAppello() {
 		return this.codAppello;
 	}
+	public int getMatricola() {
+		return this.matricola;
+	}
 
 	public String toString() {
 		return "Codice Appello: "+this.codAppello+" Matricola: "+this.matricola+" Nome: "+this.nome+" Cognome: "+this.cognome+ " Esame: "+this.esame; 
